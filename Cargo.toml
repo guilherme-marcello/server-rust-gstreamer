@@ -1,5 +1,5 @@
 [package]
-name = "demo_gst"
+name = "server-rust-gstreamer-rtp"
 version = "0.1.0"
 edition = "2021"
 
