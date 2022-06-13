@@ -3,6 +3,7 @@ authors = ["Guilherme Marcello <guilemosmarcello@gmail.com>"]
 name = "server-rust-gstreamer-rtp"
 description = "Basic usage of Gstreamer bindings for Rust"
 license = "MIT"
+readme = "./README.md"
 repository = "https://github.com/guilherme-marcello/server-rust-gstreamer-rtp"
 version = "0.1.0"
 edition = "2021"
