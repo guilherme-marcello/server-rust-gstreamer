@@ -1,5 +1,4 @@
 use std::env;
-
 use gstreamer as gst;
 use gst::{prelude::*, Pipeline};
 
@@ -14,9 +13,9 @@ pub struct VideoTestPipeline {
 }
 
 impl VideoTestPipeline {
-    pub fn _build(&self, target_host: &str, target_port: &str, pattern_name: &str) {
+    fn _build(&self, target_host: String, target_port: String, pattern_name: String) {
         let videosrc = gst::ElementFactory::make("videotestsrc", Some("source"))
-        .expect("Could not create videotestsrc");
+            .expect("Could not create videotestsrc");
 
         let encoder = gst::ElementFactory::make("x264enc", Some("encoder"))
             .expect("Could not create x264enc");
@@ -55,9 +54,9 @@ impl BasicPipeline for VideoTestPipeline {
 
     fn build(&self) {
         self._build(
-            &env::var("UDP_HOST").unwrap_or("127.0.0.1".to_string()), 
-            &env::var("UDP_PORT").unwrap_or("50000".to_string()),
-            &env::var("TEST_PATTERN").unwrap_or("0".to_string())
+            env::var("UDP_HOST").unwrap_or("127.0.0.1".to_string()),
+            env::var("UDP_PORT").unwrap_or("50000".to_string()),
+            env::var("TEST_PATTERN").unwrap_or("0".to_string())
         );
     }
 
