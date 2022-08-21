@@ -51,13 +51,15 @@ Start a container running the image we just created
 ```bash
   docker run --rm -e UDP_HOST=${HOST_IP} server-rust-gstreamer-rtp
 ```
-
+### Packet sniffing
 Capture incoming packets from container
 ```bash
   tcpdump -v -i any -n udp port ${UDP_PORT}
 ```
-
-
+Or, process incoming UDP packets using gst-launch-1.0 and display the video stream on the screen
+```bash
+  gst-launch-1.0 -v udpsrc port=${UDP_PORT} ! "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! h264parse ! decodebin ! videoconvert ! autovideosink sync=false
+```
 
 
 
