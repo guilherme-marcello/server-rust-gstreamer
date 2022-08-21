@@ -42,7 +42,20 @@ Start the server
 
 ## Deployment with Docker
 
-// TODO
+Build the app's container image
+```bash
+  docker build -t server-rust-gstreamer-rtp .
+```
+
+Start a container running the image we just created
+```bash
+  docker run --rm -e UDP_HOST=${HOST_IP} server-rust-gstreamer-rtp
+```
+
+Capture incoming packets from container
+```bash
+  tcpdump -v -i any -n udp port ${UDP_PORT}
+```
 
 
 
